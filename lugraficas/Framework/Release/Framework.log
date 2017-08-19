@@ -1,0 +1,66 @@
+﻿  Core.cpp
+  Win32Framework.cpp
+  Cube.cpp
+  D3DXQuad.cpp
+  GLMesh.cpp
+  D3DXMesh.cpp
+  PrimitiveInstance.cpp
+  PrimitiveManager.cpp
+  GLQuad.cpp
+  SceneProp.cpp
+  Triangle.cpp
+  cil.cpp
+src\scene\D3DXMesh.cpp(133): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(136): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(139): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(189): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(192): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(195): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(225): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(228): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(265): warning C4244: '=': conversion from 'double' to 'unsigned long', possible loss of data
+src\scene\D3DXMesh.cpp(270): warning C4244: '=': conversion from 'double' to 'unsigned long', possible loss of data
+src\scene\D3DXMesh.cpp(275): warning C4244: '=': conversion from 'double' to 'unsigned long', possible loss of data
+src\scene\D3DXMesh.cpp(283): warning C4244: '=': conversion from 'double' to 'unsigned long', possible loss of data
+src\scene\D3DXMesh.cpp(288): warning C4244: '=': conversion from 'double' to 'unsigned long', possible loss of data
+src\scene\D3DXMesh.cpp(293): warning C4244: '=': conversion from 'double' to 'unsigned long', possible loss of data
+src\scene\D3DXMesh.cpp(328): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+src\scene\D3DXMesh.cpp(334): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+src\scene\D3DXMesh.cpp(340): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+src\scene\D3DXMesh.cpp(346): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+src\scene\D3DXMesh.cpp(499): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(566): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(568): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(570): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(572): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(606): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(608): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(610): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(645): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(647): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(649): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(672): warning C4018: '<': signed/unsigned mismatch
+src\scene\D3DXMesh.cpp(688): warning C4018: '<': signed/unsigned mismatch
+src\scene\D3DXMesh.cpp(702): warning C4018: '<': signed/unsigned mismatch
+src\scene\D3DXMesh.cpp(706): warning C4018: '<': signed/unsigned mismatch
+src\scene\D3DXMesh.cpp(820): warning C4018: '<': signed/unsigned mismatch
+src\scene\D3DXMesh.cpp(78): warning C4101: 'lastPos': unreferenced local variable
+src\scene\D3DXMesh.cpp(94): warning C4101: 'g_fNumero': unreferenced local variable
+src\scene\D3DXMesh.cpp(516): warning C4101: 'indiceMatriz': unreferenced local variable
+src\scene\D3DXMesh.cpp(920): warning C4018: '<': signed/unsigned mismatch
+src\scene\D3DXMesh.cpp(1109): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+src\scene\D3DXMesh.cpp(1113): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  InputManager.cpp
+  Timer.cpp
+  Utils.cpp
+  Camera.cpp
+  BaseDriver.cpp
+  D3DXDriver.cpp
+  D3DXRT.cpp
+  D3DXShader.cpp
+  GLDriver.cpp
+  GLRT.cpp
+  GLShader.cpp
+  D3DXTexture.cpp
+  GLTexture.cpp
+  Framework.vcxproj -> C:\Users\F_A_R\Source\Repos\Pato-Proyecto\Pato\Release\Framework.lib

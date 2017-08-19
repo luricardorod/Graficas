@@ -1,0 +1,5 @@
+﻿  Application.cpp
+  App.cpp
+e:\uad\6to\chemonky\graficas\lugraficas\app\application.cpp(342): warning C4244: '*=': conversion from 'float' to 'int', possible loss of data
+  App.vcxproj -> E:\UAD\6to\Chemonky\Graficas\lugraficas\bin\App.exe
+  App.vcxproj -> E:\UAD\6to\Chemonky\Graficas\lugraficas\bin\App.pdb (Full PDB)

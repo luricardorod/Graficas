@@ -1,0 +1,25 @@
+//States:
+None		= 0
+Attack		= 1
+Build		= 2
+Dead		= 3
+Garrison	= 4
+Idle		= 5
+MoveTo		= 6
+Recollect	= 7
+Roting		= 8
+
+OnEnter = function()
+{
+
+}
+
+OnUpdate = function()
+{
+	return Idle;
+}
+
+OnExit = function()
+{
+
+}
