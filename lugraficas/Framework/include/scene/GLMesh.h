@@ -1,91 +1,103 @@
-#ifndef PATO_MESH_GL_H
-#define PATO_MESH_GL_H
+#ifndef UAD_COBJECT3D_GL_H
+#define UAD_COBJECT3D_GL_H
 
-#include "../Config.h"
-#ifdef USING_OPENGL_ES20
+#include "Config.h"
+
 #include <GLES2/gl2.h>
 #include <GLES2/gl2ext.h>
-#include <video/GLTexture.h>
-#elif defined(USING_OPENGL_ES30)
-#include <GLES3/gl3.h>
-#include <video/GLTexture.h>
-#elif defined(USING_OPENGL_ES31)
-#include <GLES3/gl31.h>
-#include <video/GLTexture.h>
-#elif defined(USING_OPENGL)
-#ifdef OS_WINDOWS
-#include <GL/glew.h>
-#elif defined(OS_LINUX)
-#include <GL/gl.h>
-#endif
-#include <video/GLTexture.h>
-#endif
+#include <video\GLTexture.h>
 
-#include <video/BaseDriver.h>
-#include <utils/Utils.h>
-#include <CMatrix4D.h>
-#include <scene/PrimitiveBase.h>
 
+#include "CMatrix4D.h"
+#include "PrimitiveBase.h"
+#include <utils\Utils.h>
 #include <vector>
 
-class GLMesh : public PrimitiveBase
+
+struct textureByMesh
 {
-public:
-	GLMesh() {}
-	/*
-	struct SubSetInfo
-	{
-		unsigned int		Sig;
-
-		unsigned long		VertexAttrib;
-		unsigned int		Id;
-		int		IdDiffuseTex;
-		int		IdSpecularTex;
-		int		IdGlossTex;
-		int		IdNormalTex;
-		int		IdReflectTex;
-		int		IdTexUniformLoc;
-
-
-		int					DiffuseId;
-		int					SpecularId;
-		int					GlossfId;
-		int					NormalId;
-		int					ReflectId;
-
-		unsigned int		VertexStart;
-		unsigned int		NumVertex;
-		unsigned int		TriStart;
-		unsigned int		NumTris;
-		unsigned int		VertexSize;
-		bool				bAlignedVertex;
-	};
-
-	struct MeshInfo
-	{
-		unsigned int VertexSize;
-		unsigned int NumVertex;
-
-		unsigned int Id;
-		unsigned int IdIBO;
-
-		std::vector<SubSetInfo>	SubSets;
-	};
-	*/
-
-	void Create() {}
-	void Create(char * filename);
-	void Transform(CMatrix4D * t);
-	void Draw(CMatrix4D * t, CMatrix4D * vp);
-	void Destroy();
-
-	void GatherInfo();
-	/*
-	int  LoadTex(std::string p, xF::xMaterial *mat);
-	CMatrix4D	transform;
-	XDataBase	xFile;
-	std::vector<MeshInfo> Info;
-	*/
+	bool specular;
+	bool gloss;
+	bool normal;
+	char* specularName;
+	char* glossName;
+	char* normalName;
+	char *diffuseName;
+	int  idSpecular;
+	int  idNormal;
+	int  idDiffuse;
+	int	 idGloss;
 };
+
+struct infotex {
+public:
+	unsigned short numberOfTextures;
+	std::vector<unsigned short> indicesTextures;
+	std::vector<textureByMesh> textures;
+};
+
+class GLMesh : public PrimitiveBase {
+
+public:
+	//std::vector<Bones> bones;
+	CMatrix4D	transform;
+
+	void Create(char * path);
+	void Transform(CMatrix4D *t);
+	void Draw(CMatrix4D *t, CMatrix4D *vp);
+	void Destroy();
+	bool viewWareFrame = true;
+	struct BonsInlfluenceForVertex
+	{
+		std::vector<int> bones;
+		std::vector<float> influence;
+	};
+	struct mesh {
+		GLuint			VB;
+		GLuint			IBMesh;
+
+		GLuint			IB[20];
+		std::vector<CVertex> bufferVertex;
+		std::vector<unsigned short> meshbufferIndex;
+		std::vector<unsigned short> bufferIndex;
+		infotex infoTexture;
+		std::vector<std::vector<unsigned short>*> bufferIndexForTextures;
+		std::vector<BonsInlfluenceForVertex> bonsInlfluenceForVertex;
+
+	};
+
+	GLMesh() : shaderID(0), shaderWireFrame(0) {}
+
+	GLuint	shaderID;
+	GLuint	shaderWireFrame;
+	GLint	vertexAttribLocSimple;
+	GLint   matWorldViewProjUniformLocSimple;
+
+	GLint	vertexAttribLoc;
+	GLint	normalAttribLoc;
+	GLint	binormalAttribLoc;
+	GLint	tangenteAttribLoc;
+	GLint	uvAttribLoc;
+	GLint	normalLoc;
+	GLint	diffuseLoc;
+	GLint	specularLoc;
+	GLint	glossLoc;
+
+	GLint  matWorldViewProjUniformLoc;
+	GLint  matWorldUniformLoc;
+
+
+	GLint DirectionGlobalLight;
+	GLint ColorGlobalLight;
+	GLint PositionPointLight;
+	GLint ColorPointLight;
+	GLint PosCamera;
+
+	int AddBone(char* archivo, int counter, int father);
+	void AddChildsAndBrothers();
+	std::vector<mesh> meshes;
+
+};
+
 
 #endif

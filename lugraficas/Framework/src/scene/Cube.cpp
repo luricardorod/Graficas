@@ -221,14 +221,6 @@ void Cube::Create()
 	D3D11DeviceContext->VSSetShader(pVS.Get(), 0, 0);
 	D3D11DeviceContext->PSSetShader(pFS.Get(), 0, 0);
 
-	/*
-	float x, y, z, w;		//0
-	float nx, ny, nz, nw;	//16
-	float bx, by, bz, bw;	//32
-	float tx, ty, tz, tw;	//48
-	float s, t;				//64
-	float weight;			//72
-	*/
 
 	D3D11_INPUT_ELEMENT_DESC vertexDeclaration[] =
 	{

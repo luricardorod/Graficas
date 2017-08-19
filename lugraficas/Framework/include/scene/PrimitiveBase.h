@@ -12,6 +12,31 @@
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 #endif
 
+struct MeshBone
+{
+	std::string Name;
+	CMatrix4D m_CMat4Relative;
+	int m_iParent;
+	std::vector<int> m_vecChildren;
+	std::vector<int> m_vecSiblings;
+};
+
+struct SAnimation
+{
+	std::string Name;
+	std::vector <CQuaternion> Scalation;
+	std::vector <int> ScalationTimes;
+	std::vector <CQuaternion> Rotation;
+	std::vector <int> RotationTimes;
+	std::vector <CQuaternion> Traslation;
+	std::vector <int> TraslationTimes;
+};
+
+struct SAnimationSet
+{
+	std::string Name;
+	std::vector <SAnimation> Keys;
+};
 struct simplefloat16
 {
 	float v[16];

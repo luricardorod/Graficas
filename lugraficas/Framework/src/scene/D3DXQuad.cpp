@@ -130,14 +130,7 @@ void D3DXQuad::Draw(CMatrix4D * t, CMatrix4D * vp)
 	Camera *pActualCamera = pScProp->pCameras[0];
 	CMatrix4D VP = pActualCamera->VP;
 	CMatrix4D WV = pActualCamera->View;
-	/*
-	//VP.Inverse(&CnstBuffer.WVPInverse);
-	CnstBuffer.WVPInverse = VP.Inverse();
-	CnstBuffer.WVP = transform;
-	CnstBuffer.World = transform;
-	CnstBuffer.WorldView = WV;
-	CnstBuffer.CameraPos = pActualCamera->Eye;
-	*/
+
 	memcpy(&CnstBuffer.WVPInverse, VP.Inverse().v, 64);
 	memcpy(&CnstBuffer.WVP, transform.v, 64);
 	memcpy(&CnstBuffer.World, transform.v, 64);
@@ -146,11 +139,7 @@ void D3DXQuad::Draw(CMatrix4D * t, CMatrix4D * vp)
 
 	if (pScProp->pLightCameras.size() > 0)
 	{
-		/*
-		CnstBuffer.WVPLight = pScProp->pLightCameras[0]->VP;
-		CnstBuffer.LightCameraPos = pScProp->pLightCameras[0]->Eye;
-		CnstBuffer.LightCameraInfo = CVector4D(pScProp->pLightCameras[0]->NPlane, pScProp->pLightCameras[0]->FPlane, pScProp->pLightCameras[0]->Fov, 1.0f);
-		*/
+
 		memcpy(&CnstBuffer.WVPLight, pScProp->pLightCameras[0]->VP.v, 64);
 		memcpy(&CnstBuffer.LightCameraPos, pScProp->pLightCameras[0]->Eye.v, 16);
 
@@ -173,10 +162,7 @@ void D3DXQuad::Draw(CMatrix4D * t, CMatrix4D * vp)
 
 	for (unsigned int i = 0; i < numLights; i++)
 	{
-		/*
-		CnstBuffer.LightPositions[i] = pScProp->Lights[i].Position;
-		CnstBuffer.LightColors[i] = pScProp->Lights[i].Color;
-		*/
+
 		memcpy(&CnstBuffer.LightPositions[i], pScProp->Lights[i].Position.v, 16);
 		memcpy(&CnstBuffer.LightColors[i], pScProp->Lights[i].Color.v, 16);
 	}

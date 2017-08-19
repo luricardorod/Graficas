@@ -899,11 +899,6 @@ void D3DXMesh::Draw(CMatrix4D *t, CMatrix4D *vp)
 	int countSpec = 0;
 	int countGlos = 0;
 
-	/*
-	CnstBuffer.WVP = WVP;
-	CnstBuffer.World = transform;
-	CnstBuffer.WorldView = WorldView;
-	*/
 	memcpy(&CnstBuffer.WVP.v, WVP.v, 64);
 	memcpy(&CnstBuffer.World.v, transform.v, 64);
 	memcpy(&CnstBuffer.WorldView.v, WorldView.v, 64);
@@ -1004,68 +999,7 @@ void D3DXMesh::Draw(CMatrix4D *t, CMatrix4D *vp)
 
 	}
 }
-/*
-void D3DXMesh::Draw(CMatrix4D * t, CMatrix4D * vp)
-{
-if (t)
-transform = *t;
-Camera *pActualCamera = pScProp->pCameras[0];
-for (std::size_t i = 0; i < xFile.MeshInfo.size(); i++)
-{
-MeshInfo  *it_MeshInfo = &Info[i];
-xMeshGeometry *pActual = &xFile.XMeshDataBase[0]->Geometry[i];
-CMatrix4D VP = pActualCamera->VP;
-CMatrix4D WVP = transform*VP;
-CMatrix4D WorldView = transform*pActualCamera->View;
-CVector4D infoCam = CVector4D(pActualCamera->NPlane, pActualCamera->FPlane, pActualCamera->Fov, 1.0f);
-it_MeshInfo->CnstBuffer.WVP = WVP;
-it_MeshInfo->CnstBuffer.World = transform;
-it_MeshInfo->CnstBuffer.WorldView = WorldView;
-it_MeshInfo->CnstBuffer.Light0Pos = pScProp->Lights[0].Position;
-it_MeshInfo->CnstBuffer.Light0Col = pScProp->Lights[0].Color;
-it_MeshInfo->CnstBuffer.CameraPos = pActualCamera->Eye;
-it_MeshInfo->CnstBuffer.Ambient = pScProp->AmbientColor;
-it_MeshInfo->CnstBuffer.CameraInfo = infoCam;
-UINT stride = it_MeshInfo->VertexSize;
-UINT offset = 0;
-int Sig = -1;
-D3DXShader *s = 0;
-D3DXShader *last = (D3DXShader*)32;
-D3D11DeviceContext->IASetVertexBuffers(0, 1, it_MeshInfo->VB.GetAddressOf(), &stride, &offset);
-for (std::size_t k = 0; k < it_MeshInfo->SubSets.size(); k++)
-{
-bool update = false;
-SubSetInfo *sub_info = &it_MeshInfo->SubSets[k];
-unsigned int sig = sub_info->Sig;
-sig |= gSig;
-s = dynamic_cast<D3DXShader*>(g_pBaseDriver->GetShaderSig(sig));
-if(s!=last)
-update=true;
-if(update)
-{
-D3D11DeviceContext->VSSetShader(s->pVS.Get(), 0, 0);
-D3D11DeviceContext->PSSetShader(s->pFS.Get(), 0, 0);
-D3D11DeviceContext->IASetInputLayout(s->Layout.Get());
-D3D11DeviceContext->UpdateSubresource(it_MeshInfo->pd3dConstantBuffer.Get(), 0, 0, &it_MeshInfo->CnstBuffer, 0, 0);
-D3D11DeviceContext->VSSetConstantBuffers(0, 1, it_MeshInfo->pd3dConstantBuffer.GetAddressOf());
-D3D11DeviceContext->PSSetConstantBuffers(0, 1, it_MeshInfo->pd3dConstantBuffer.GetAddressOf());
-}
-D3D11DeviceContext->PSSetShaderResources(0, 1, sub_info->DiffuseTex->pSRVTex.GetAddressOf());
-if (s->Sig&Signature::SPECULAR_MAP)
-D3D11DeviceContext->PSSetShaderResources(1, 1, sub_info->SpecularTex->pSRVTex.GetAddressOf());
-if (s->Sig&Signature::GLOSS_MAP)
-D3D11DeviceContext->PSSetShaderResources(2, 1, sub_info->GlossfTex->pSRVTex.GetAddressOf());
-if (s->Sig&Signature::NORMAL_MAP)
-D3D11DeviceContext->PSSetShaderResources(3, 1, sub_info->NormalTex->pSRVTex.GetAddressOf());
-D3D11DeviceContext->PSSetSamplers(0, 1, sub_info->DiffuseTex->pSampler.GetAddressOf());
-D3D11DeviceContext->IASetIndexBuffer(sub_info->IB.Get(), DXGI_FORMAT_R16_UINT, 0);
-D3D11DeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-D3D11DeviceContext->DrawIndexed(sub_info->NumVertex, 0, 0);
-last = s;
-}
-}
-}
-*/
+
 
 void D3DXMesh::Destroy()
 {
